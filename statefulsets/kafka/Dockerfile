@@ -1,15 +1,14 @@
-FROM ubuntu:16.04 
+FROM centos:7.4.1708
 ENV KAFKA_USER=kafka \
 KAFKA_DATA_DIR=/var/lib/kafka/data \
 JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 \
 KAFKA_HOME=/opt/kafka \
 PATH=$PATH:/opt/kafka/bin
 
-ARG KAFKA_VERSION=0.10.2.0
-ARG KAFKA_DIST=kafka_2.11-0.10.2.0
+ARG KAFKA_VERSION=0.10.2.1
+ARG KAFKA_DIST=kafka_2.11-0.10.2.1
 RUN set -x \
-    && apt-get update \
-    && apt-get install -y openjdk-8-jre-headless wget \
+    && yum install -y java-1.8.0-openjdk-headless wget \
 	&& wget -q "http://www.apache.org/dist/kafka/$KAFKA_VERSION/$KAFKA_DIST.tgz" \
     && wget -q "http://www.apache.org/dist/kafka/$KAFKA_VERSION/$KAFKA_DIST.tgz.asc" \
     && wget -q "http://kafka.apache.org/KEYS" \

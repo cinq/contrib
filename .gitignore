@@ -21,3 +21,6 @@
 Session.vim
 .netrwhist
 
+# idea
+.idea
+contrib.iml
